@@ -8,16 +8,15 @@
     <title>王紫萁的个人主页</title>
 </head>
 <body>
+<header>
+    <div>
+        <h1>王紫萁的个人主页</h1>
+    </div>
+    <div><a href="index.html" style="font-size: 20px">zh</a> | <a href="index_en.html" style="font-size: 20px">en</a> </div>
+</header>
+<div id="mainPage">
 
-<div style="display: flex; flex-direction: column">
-    <header class="page__header" >
-        <div>
-            <a href="index.html" style="text-decoration: none">zh</a> | <a href="index_en.html" style="text-decoration: none">en</a> | 王紫萁的个人主页
-        </div>
-        <div id="header__time">
-        </div>
-    </header>
-    <div class="info__block">
+    <div class="Box" style="display: block">
         <h2>个人简介</h2>
         <img src="static/avator.jpg" style="float: left; width: 80px;padding: 0 10px 10px 10px">
         <p>
@@ -26,7 +25,7 @@
         </p>
     </div>
 
-    <div class="info__block">
+    <div class="Box">
         <h2>联系方式</h2>
         <ul>
             <li><strong>电话：</strong>+86 18995126353</li>
@@ -50,26 +49,29 @@
         </ul>
     </div>
 
-    <div class="info__block">
+    <div class="Box">
         <h2>我感兴趣的</h2>
         <p> 网络 | 机器学习 | 大数据 | 计算机视觉 | 内容推荐</p>
     </div>
 
-    <div class="info__block">
+    <div class="Box">
         <h2>动态</h2>
         <ul>
             <li><a href="https://github.com/wayne-ziqi/python-learning/tree/master/06_game">python实践小游戏</a></li>
-            <li><a href="https://github.com/wayne-ziqi/Digital-Design-and-Computer-Organization-Experiments">2021秋季数电实验</a></li>
+            <li>
+                <a href="https://github.com/wayne-ziqi/Digital-Design-and-Computer-Organization-Experiments">2021秋季数电实验</a>
+            </li>
             <li><a href="https://github.com/wayne-ziqi/pa_nju">2021秋季PA</a></li>
             <li><a href="https://github.com/wayne-ziqi/nju-oslab">2022春季操作系统实验</a></li>
             <li><a href="https://github.com/wayne-ziqi/nju-computer-network-labs">2022春季计网实验</a></li>
             <li><a href="baiduSummer/index.html">2022百度前端训练营</a></li>
         </ul>
     </div>
-
+    <footer id="mainFooter">
+        <div>MIT License</div>
+        <div>Copyright (c) 2022 wayne-ziqi</div>
+    </footer>
 </div>
 
-<script src="scripts/mainPage.js" defer></script>
-<script src="scripts/time.js"></script>
 </body>
 </html>
