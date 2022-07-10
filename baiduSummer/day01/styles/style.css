@@ -1,0 +1,21 @@
+html {
+    font-size: 20px;
+    font-style: normal;
+    color: aqua;
+    font-family: "Open Sans", sans-serif;
+}
+
+body {
+    width: 600px;
+    margin: 0 auto;
+    background-color: #FF9500;
+
+}
+
+.origin-color {
+    color: aqua;
+}
+
+.changed-color {
+    color: red;
+}

@@ -1,0 +1,6 @@
+opencv-python>=4.6.0.66
+paddlehub>=2.2.0
+matplotlib>=3.5.2
+eel>=0.14.0
+numpy>=1.22.3
+pillow>=9.0.1

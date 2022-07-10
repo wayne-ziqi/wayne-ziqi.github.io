@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo List</title>
+    <link href="style/todoList.css" rel="stylesheet">
+</head>
+<body>
+<header>
+    <div class="search__parent">
+        <span style="font-size: 40px"><strong>TODOLIST</strong></span>
+        <input type="text" id="todoText" placeholder="your todo" class="search">
+        <button id="addTodo" class="btn">添加</button>
+    </div>
+
+
+</header>
+<div id="listBox">
+    <div >
+        <h2>待完成</h2>
+        <ul id="undo">
+        </ul>
+    </div>
+    <div>
+        <h2>已完成</h2>
+        <ul id="done">
+        </ul>
+    </div>
+</div>
+<script type="text/javascript" src="scripts/todoList.js"></script>
+</body>
+
+</html>

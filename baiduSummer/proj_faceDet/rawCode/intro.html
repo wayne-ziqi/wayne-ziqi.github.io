@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>如何开始</title>
+    <link href="style.css" rel="stylesheet">
+    <link rel="stylesheet" href="highlight/styles/default.min.css">
+
+</head>
+<body>
+<header>
+    <h1 style="margin: 5px"><a href="index.html">Face DET</a></h1>
+    <div id="rawCodeLink" style="display: flex;align-items: center;margin: 5px">
+        <a href="intro.html">如何开始 </a> | <a>项目链接</a>
+    </div>
+</header>
+<div id="mainPage">
+    <h1>快速开始</h1>
+    <div id="intro" class="Box" style="align-items: flex-start; padding: 20px">
+        <h2>1. 准备环境</h2>
+        <p>
+            如果你只需要用到人脸检测的功能，可以跳过此步（因为人脸检测是由前端导入blazeface_1000e模型直接实现的）。
+            而如果需要使用人脸标记的功能，你需要准备python运行环境（python >= 3.8）。如果你的环境中未安装Paddlepaddle，
+            那么你需要先导入Paddlepaddle，教程在<a href="https://www.paddlepaddle.org.cn/">这里</a>
+
+        </p>
+        <pre><code class="language-cpp">pip install -r requirements.txt</code></pre>
+        <h2>2. 运行脚本</h2>
+        <p>
+            cd到face_landmark文件夹下，执行face_landmark.py。同样，如果你只需要用到人脸检测，只需要在浏览器中打开
+            index.html文件即可
+        </p>
+        <pre><code class="language-cpp">python face_landmark.py</code></pre>
+        <h2>3. 上传文件并检测</h2>
+        <p>
+            我们首先需要上传一张图片，点击开始检测和开始标记执行识别程序。检测结果会给出每张人脸的位置坐标和置信度
+            如果人脸标记无法识别到人脸，那么浏览器会弹出alert提示。
+        </p>
+
+        <h2>4. 效果展示</h2>
+        <div class="imgBox">
+            <img src="imgs/demo1.png" class="imgDom" alt="人脸检测">
+            <img src="imgs/demo2.png" class="imgDom" alt="关键点标记">
+        </div>
+    </div>
+</div>
+</body>
+<script src="highlight/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</html>

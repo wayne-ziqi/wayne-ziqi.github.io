@@ -1,0 +1,256 @@
+body {
+    background-color: white;
+    display: flex;
+    margin: 0;
+}
+
+.leftBlock {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    height: 100vh;
+    padding: 0;
+    border-right: 1px solid rgb(200, 200, 200);
+    background-color: white;
+}
+
+
+.rightBlock {
+    height: 100vh;
+    flex: 1;
+    /*flex basis, flex grow, flex shrink*/
+}
+
+.rightLeft {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 60px);
+    border-right: 1px solid rgb(200, 200, 200);
+}
+
+.mailBox {
+    display: flex;
+    width: 60%;
+    flex-direction: column;
+
+}
+
+.mail__header {
+    display: flex;
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px solid rgb(200, 200, 200);
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.title {
+    height: 60px;
+    width: 100%;
+    display: flex;
+    font-size: 24px;
+    padding: 0;
+    margin: 0;
+    line-height: 2.5;
+    color: rgb(200, 200, 200);
+    text-align: center;
+    justify-content: center;
+    border-bottom: 1px solid rgb(200, 200, 200);
+}
+
+.navigator {
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px 0 10px;
+    border-bottom: 1px solid rgb(200, 200, 200);
+}
+
+.search__container {
+    height: 60px;
+    width: 800px;
+    margin: 100px auto 0 auto;
+}
+
+.search__parent {
+    position: relative;
+}
+
+.search {
+    width: 300px;
+    height: 40px;
+    border-radius: 18px;
+    outline: none;
+    border: 1px solid #ccc;
+    padding-left: 20px;
+    position: absolute;
+}
+
+.btn {
+    height: 35px;
+    width: 35px;
+    margin: 0;
+    position: absolute;
+    background: url("../imgs/search.png") no-repeat;
+    top: 6px;
+    left: 285px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.basic__info {
+    position: relative;
+    top: 10%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.avator {
+
+    /* transform: translateX(-50%); */
+    width: 70px;
+    height: 65px;
+}
+
+.info {
+
+    width: 100%;
+    height: auto;
+    /* height: 25%; */
+    /* transform: translateX(-50%); */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.leftBlock .bottomBlock {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    padding: 0;
+    height: calc(100vh - 60px);
+    width: 100%;
+    /* justify-content: center; */
+}
+
+.message {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 50%;
+    width: 80%;
+
+}
+
+.message:hover {
+    cursor: pointer;
+}
+
+.message:hover .info__block {
+    display: block;
+}
+
+.message:hover .expand {
+    display: none;
+}
+
+.expand {
+    width: 70%;
+    background-color: #f0f0f0f0;
+    text-align: center;
+    font-size: 15px;
+    padding: 5px 0;
+    border-radius: 5%;
+}
+
+.info__block {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+}
+
+.info__entry {
+    margin: 10px;
+    border-radius: 5%;
+    background-color: #f5a9e0f0;
+    text-align: center;
+    width: 60%;
+}
+
+.float__left {
+    float: left;
+}
+
+.float__right {
+    float: right;
+}
+
+
+.img__earth {
+    width: 120px;
+    height: 120px;
+    float: left;
+    margin: 0;
+}
+
+.notation__header {
+    display: flex;
+    width: 100%;
+    height: 60px;
+    border: 2px solid white;
+    border-bottom-color: #ccc;
+    border-left: 6px solid purple;
+    margin: 1px;
+}
+
+.notation {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin: 1px;
+}
+
+.notation__entry {
+    display: block;
+    width: 100%;
+    border: 2px solid white;
+    border-bottom-color: rgb(211, 208, 208);
+}
+
+.notation__footer {
+
+    display: flex;
+    height: 60px;
+    border: 1px solid rgb(81, 154, 243);
+    background-color: rgb(81, 154, 243);
+    border-radius: 5%;
+    margin: 0;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.notation__add {
+    display: flex;
+    width: 100px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.notation__add:hover {
+    cursor: pointer;
+}
+
+.rightBlock .bottomBlock {
+    display: flex;
+}
+
+
+/****************************/

@@ -1,0 +1,224 @@
+header {
+    display: flex;
+    height: auto;
+    width: 100%;
+    color: aliceblue;
+    background-color: cornflowerblue;
+    margin: 0;
+    align-items: center;
+    justify-content: space-between;
+}
+
+body {
+    margin: 0;
+}
+
+h1 a {
+    text-decoration: none;
+    color: #ffffffff;
+}
+#rawCodeLink a{
+    text-decoration: none;
+    color: #ffffffff;
+}
+
+p{
+    text-indent: 2em;
+}
+
+h2 {
+    border-bottom: 1px solid #0f0f0f0f;
+}
+
+
+th,
+td {
+    border: 1px solid #333;
+    width: 100px;
+}
+
+
+#mainPage {
+    position: absolute;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+#mainFooter {
+    display: flex;
+    padding: 40px;
+    color: gray;
+    border-top: 1px solid #0f0f0f0f;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.Box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid #0f0f0f0f;
+    width: 80%;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+#inputFile {
+
+}
+
+.imgDom {
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0);
+    border-radius: 10px;
+}
+
+.imgBox {
+    width: 70%;
+    flex-grow: 1;
+    margin: 10px;
+}
+
+#inputFooter {
+    height: auto;
+}
+
+
+.button {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    background: transparent;
+    padding: 0;
+    font-size: inherit;
+    font-family: inherit;
+    margin: 5px;
+}
+
+.button.start_btn {
+    width: 12rem;
+    height: auto;
+}
+
+.button.start_btn .circle {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    position: relative;
+    display: block;
+    margin: 0;
+    width: 3rem;
+    height: 3rem;
+    background: #282936;
+    border-radius: 1.625rem;
+}
+
+.button.start_btn .circle .icon {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background: #fff;
+}
+
+.button.start_btn .circle .icon.arrow {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    left: 0.625rem;
+    width: 1.125rem;
+    height: 0.125rem;
+    background: none;
+}
+
+.button.start_btn .circle .icon.arrow::before {
+    position: absolute;
+    content: "";
+    top: -0.29rem;
+    right: 0.0625rem;
+    width: 0.625rem;
+    height: 0.625rem;
+    border-top: 0.125rem solid #fff;
+    border-right: 0.125rem solid #fff;
+    transform: rotate(45deg);
+}
+
+.button.start_btn .button-text {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0.75rem 0;
+    margin: 0 0 0 1.85rem;
+    color: #282936;
+    font-weight: 700;
+    line-height: 1.6;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.button:hover .circle {
+    width: 100%;
+}
+
+.button:hover .circle .icon.arrow {
+    background: #fff;
+    transform: translate(1rem, 0);
+}
+
+.button:hover .button-text {
+    color: #fff;
+}
+
+
+/* From uiverse.io by @Custyyyy */
+.button-file {
+    display: inline-block;
+    border-radius: 7px;
+    border: none;
+    background: #1875FF;
+    color: white;
+    font-family: inherit;
+    text-align: center;
+    font-size: 13px;
+    box-shadow: 0px 14px 20px -11px #1875FF;
+    width: 10em;
+    padding: 1em;
+    transition: all 0.4s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.button-file span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.4s;
+}
+
+.button-file span:after {
+    content: 'jpg/png';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px; /*20*/
+    transition: 0.7s;
+}
+
+.button-file:hover span {
+    /*padding-right: 3.55em;*/
+    padding-right: 4.5em;
+}
+
+.button-file:hover span:after {
+    opacity: 4;
+    right: 0;
+}
