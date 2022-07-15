@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Face Detection</title>
+    <link href="../style.css" rel="stylesheet">
+</head>
+
+<body>
+<header>
+    <h1 style="margin: 5px"><a href="index.html">Face DET</a></h1>
+    <div id="rawCodeLink" style="display: flex;align-items: center;margin: 5px">
+        <a href="../intro.html">如何开始 </a> | <a
+            href="https://wayne-ziqi.github.io/ziqipage/baiduSummer/proj_faceDet">项目链接</a>
+    </div>
+</header>
+<div id="mainPage">
+    <div id="inputBox" class="Box">
+        <h2>图片输入</h2>
+        <div class="imgBox">
+            <img id="imgDom" class="imgDom" src="" alt="">
+        </div>
+
+        <footer id="inputFooter">
+            <input type="file" id="inputFile" style="display: none">
+            <button id="inputBtn" class="button-file" style="vertical-align:middle"
+                    onclick="document.getElementById('inputFile').click()"><span>上传</span></button>
+            <a id="srcImgLink" href="" download=""></a>
+        </footer>
+    </div>
+    <div id="faceDetection" class="Box">
+        <h2>人脸检测</h2>
+        <div class="imgBox">
+            <canvas id="canvasDet" class="imgDom"></canvas>
+        </div>
+        <table id="detTab">
+        </table>
+
+        <button id="startDet" class="button start_btn">
+            <span class="circle" aria-hidden="true">
+                <span class="icon arrow"></span>
+            </span>
+            <span class="button-text">开始检测！</span>
+        </button>
+        <!--        <button id="startDet">人脸检测</button>-->
+    </div>
+    <div id="faceLandMark" class="Box">
+        <h2>关键点标记</h2>
+        <div class="imgBox">
+            <img id="imgMark" src="" alt="" class="imgDom">
+        </div>
+        <button id="startMark" class="button start_btn">
+            <span class="circle" aria-hidden="true">
+                <span class="icon arrow"></span>
+            </span>
+            <span class="button-text">开始标记！</span>
+        </button>
+        <!--        <button id="startMark">关键点标记</button>-->
+
+    </div>
+    <div id="markOnline" class="Box">
+        <h2>综合标记</h2>
+        <div class="imgBox">
+            <canvas id="canvasOnline" class="imgDom"></canvas>
+        </div>
+        <table id="OnlineTab">
+        </table>
+
+        <button id="startOnline" class="button start_btn">
+            <span class="circle" aria-hidden="true">
+                <span class="icon arrow"></span>
+            </span>
+            <span class="button-text">开始综合标记！</span>
+        </button>
+        <!--        <button id="startDet">人脸检测</button>-->
+    </div>
+    <footer id="mainFooter">
+        <div>
+            Based on PaddleHub face landmark and WebAI blazeface_1000e model
+        </div>
+        <div>
+            Made by <a href="https://wayne-ziqi.github.io/ziqipage" style="text-decoration: none">Ziqi Wang</a>
+        </div>
+    </footer>
+
+</div>
+
+<script type="text/javascript" src='https://cdn.jsdelivr.net/npm/webai-js/dist/webai.min.js'></script>
+<script type="text/javascript" src="../scripts/blaze_face.js"></script>
+<script type="text/javascript" src="../eel.js"></script>
+<script type="text/javascript" src="../scripts/face_landmark.js"></script>
+
+
+<script type="module" src="face_landmark_Online.js"></script>
+
+</body>
+</html>

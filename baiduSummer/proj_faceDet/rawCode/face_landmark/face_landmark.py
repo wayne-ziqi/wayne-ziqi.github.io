@@ -11,7 +11,7 @@ import os
 os.makedirs("./input/", exist_ok=True)
 
 
-def face_landmark(imgPath: str):
+def keyPointDetection(imgPath: str):
     from urllib.request import urlretrieve
     urlretrieve(imgPath, './input/srcImg.png')
     src_img = cv2.imread("./input/srcImg.png")
@@ -24,7 +24,6 @@ def face_landmark(imgPath: str):
     if len(result) != 0:
         for i in range(len(result[0]['data'])):
             for index, point in enumerate(result[0]['data'][i]):
-
                 cv2.circle(tmp_img, (int(point[0]), int(point[1])), 1, (0, 255, 0), -1)
 
         res_img = 'output/face_landmark.png'
@@ -44,7 +43,7 @@ def face_landmark(imgPath: str):
 @eel.expose
 def landmark_entry(imgPath: str):
     print("process in landmark")
-    return face_landmark(imgPath)
+    return keyPointDetection(imgPath)
 
 
 if __name__ == "__main__":

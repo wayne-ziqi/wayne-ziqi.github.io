@@ -40,8 +40,8 @@ function initDet() {
         return __generator(this, function (_a) {
             imgDom = document.getElementById('imgDom');
             inputFile = document.getElementById('inputFile');
-            modelURL = './blazeface_1000e/model.onnx';
-            modelConfig = './blazeface_1000e/configs.json';
+            modelURL = '../blazeface_1000e/model.onnx';
+            modelConfig = '../blazeface_1000e/configs.json';
             window.model = new WebAI.Det(modelURL, modelConfig);
             inputFile.disabled = false;
             inputFile.addEventListener("change", function (event) {
@@ -60,7 +60,7 @@ function initDet() {
 }
 function detect() {
     return __awaiter(this, void 0, void 0, function () {
-        var canvasDet, imgDom, imgRGBA, bboxes, imgShow, detTab, htmlStr, i;
+        var canvasDet, imgDom, imgRGBA, bboxes, imgShow, i, len, point1, point2, detTab, htmlStr, i;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -70,9 +70,13 @@ function detect() {
                     return [4 /*yield*/, model.infer(imgRGBA)];
                 case 1:
                     bboxes = _a.sent();
-                    return [4 /*yield*/, WebAI.drawBBoxes(imgRGBA, bboxes)];
-                case 2:
-                    imgShow = _a.sent();
+                    imgShow = imgRGBA;
+                    for (i = 0, len = bboxes.length; i < len; i++) {
+                        point1 = new cv.Point(bboxes[i]['x1'], bboxes[i]['y1']);
+                        point2 = new cv.Point(bboxes[i]['x2'], bboxes[i]['y2']);
+                        cv.rectangle(imgShow, point1, point2, [255, 0, 0, 255]);
+                        cv.putText(imgShow, "face ".concat(i), point1, 0, 0.5, [0, 255, 0, 255], 1.5, 8);
+                    }
                     console.log(bboxes);
                     detTab = document.getElementById("detTab");
                     htmlStr = "";
