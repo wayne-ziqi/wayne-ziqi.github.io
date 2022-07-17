@@ -1,5 +1,5 @@
-dir_array = ['index.html', 'js', ['index.js'], 'css', ['index.css']];
-multi_array=['index.html', 'js', ['index.js', 'cpp',['index.cpp']], 'css', ['index.css']]
+dir_array = ['index_profile.html', 'js', ['index.js'], 'css', ['index.css']];
+multi_array=['index_profile.html', 'js', ['index.js', 'cpp',['index.cpp']], 'css', ['index.css']]
 
 function dirTree(array) {
     let curr = 0;
