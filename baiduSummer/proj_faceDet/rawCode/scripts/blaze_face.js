@@ -38,8 +38,8 @@ function initDet() {
     return __awaiter(this, void 0, void 0, function () {
         var modelURL, modelConfig;
         return __generator(this, function (_a) {
-            modelURL = '../blazeface_1000e/model.onnx';
-            modelConfig = '../blazeface_1000e/configs.json';
+            modelURL = './blazeface_1000e/model.onnx';
+            modelConfig = './blazeface_1000e/configs.json';
             window.model = new WebAI.Det(modelURL, modelConfig);
             return [2 /*return*/];
         });

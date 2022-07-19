@@ -1,6 +1,6 @@
 async function initDet() {
-    const modelURL = '../blazeface_1000e/model.onnx'
-    const modelConfig = '../blazeface_1000e/configs.json'
+    const modelURL = './blazeface_1000e/model.onnx'
+    const modelConfig = './blazeface_1000e/configs.json'
     window.model = new WebAI.Det(modelURL, modelConfig);
 }
 
