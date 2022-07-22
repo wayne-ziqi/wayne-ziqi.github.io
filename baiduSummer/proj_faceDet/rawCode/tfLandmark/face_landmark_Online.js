@@ -1,4 +1,3 @@
-"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -35,8 +34,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.initDetector = void 0;
 var KeypointDetector = /** @class */ (function () {
     function KeypointDetector(srcImgID, destCanvasID) {
         this.imgDom = document.getElementById(srcImgID);
@@ -50,8 +47,8 @@ var KeypointDetector = /** @class */ (function () {
                     case 0:
                         model = faceLandmarksDetection.SupportedModels.MediaPipeFaceMesh;
                         detectorConfig = {
-                            runtime: 'mediapipe',
-                            solutionPath: 'https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh',
+                            runtime: 'tfjs', // or 'mediapipe'
+                            // solutionPath: 'https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh',
                         };
                         _a = this;
                         return [4 /*yield*/, faceLandmarksDetection.createDetector(model, detectorConfig)];
@@ -63,7 +60,24 @@ var KeypointDetector = /** @class */ (function () {
         });
     };
     KeypointDetector.prototype.detect = function () {
-        this.faces = this.detector.estimateFaces(this.imgDom);
+        return __awaiter(this, void 0, void 0, function () {
+            var ctx, _a;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        ctx = this.canvasDom.getContext('2d');
+                        this.canvasDom.height = this.imgDom.height;
+                        this.canvasDom.width = this.imgDom.width;
+                        ctx.drawImage(this.imgDom, 0, 0, this.canvasDom.width, this.canvasDom.height);
+                        _a = this;
+                        return [4 /*yield*/, this.detector.estimateFaces(this.imgDom)];
+                    case 1:
+                        _a.faces = _b.sent();
+                        this.canvasDom.style.width = "100%";
+                        return [2 /*return*/, this.faces];
+                }
+            });
+        });
     };
     KeypointDetector.prototype.drawPath = function (ctx, points, closePath) {
         var region = new Path2D();
@@ -80,10 +94,11 @@ var KeypointDetector = /** @class */ (function () {
     KeypointDetector.prototype.drawResult = function () {
         var _this = this;
         var ctx = this.canvasDom.getContext('2d');
-        ctx.clearRect(0, 0, this.canvasDom.width, this.canvasDom.height);
+        // ctx.clearRect(0, 0, this.canvasDom.width, this.canvasDom.height);
+        console.log(this.faces);
         if (this.faces)
             this.faces.forEach(function (face) {
-                var keypoints = face.keypoints.map(function (keypoint) { return [keypoint.x, keypoint.y]; });
+                var keypoints = face.keypoints.map(function (keypoint) { return [keypoint.x, keypoint.y, keypoint.name]; });
                 // draw face boxes
                 ctx.strokeStyle = '#fd252e';
                 ctx.lineWidth = 1;
@@ -94,11 +109,26 @@ var KeypointDetector = /** @class */ (function () {
                 ], true);
                 // draw key points
                 ctx.fillStyle = '#2ff1dd';
-                for (var i = 0, NUM_KEYPOINTS = 6; i < NUM_KEYPOINTS; i++) {
+                ctx.font = "10px '微软雅黑'";
+                ctx.textAlign = "left";
+                var faceParts = [];
+                function partIn(part) {
+                    for (var i = 0; i < faceParts.length; i++) {
+                        if (part === faceParts[i])
+                            return true;
+                    }
+                    return false;
+                }
+                for (var i = 0, NUM_KEYPOINTS = keypoints.length; i < NUM_KEYPOINTS; i++) {
                     var x = keypoints[i][0];
                     var y = keypoints[i][1];
+                    if (keypoints[i][2] !== undefined && !partIn(keypoints[i][2])) {
+                        console.log(keypoints[i][2]);
+                        faceParts.push(keypoints[i][2]);
+                        ctx.fillText(keypoints[i][2], x, y);
+                    }
                     ctx.beginPath();
-                    ctx.arc(x, y, 3 /* radius */, 0, 2 * Math.PI);
+                    ctx.arc(x, y, 1 /* radius */, 0, 2 * Math.PI);
                     ctx.fill();
                 }
             });
@@ -111,8 +141,9 @@ function initDetector() {
     detector_online.init_again();
     var btn = document.getElementById('startOnline');
     btn.addEventListener("click", function (event) {
-        detector_online.detect();
-        detector_online.drawResult();
+        detector_online.detect().then(function () {
+            detector_online.drawResult();
+        });
     });
 }
-exports.initDetector = initDetector;
+initDetector();

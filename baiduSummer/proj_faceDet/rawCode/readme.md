@@ -132,8 +132,8 @@ async init_again() {
         const model = faceLandmarksDetection.SupportedModels.MediaPipeFaceMesh;
 
         const detectorConfig = {
-            runtime: 'mediapipe', // or 'tfjs'
-            solutionPath: 'https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh',
+            runtime: 'tfjs', // or 'mediapipe'
+            //solutionPath: 'https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh',
         }
         this.detector = await faceLandmarksDetection.createDetector(model, detectorConfig);
         return this.detector;
@@ -143,24 +143,37 @@ async init_again() {
 * **执行模型**
 
 ```js
-detect() {
-        this.faces = this.detector.estimateFaces(this.imgDom);
-    }
+async detect() {
+        const ctx = this.canvasDom.getContext('2d');
 
+        this.canvasDom.height = this.imgDom.height;
+        this.canvasDom.width = this.imgDom.width;
+        ctx.drawImage(this.imgDom, 0, 0, this.canvasDom.width, this.canvasDom.height);
+        this.faces = await this.detector.estimateFaces(this.imgDom);
+        this.canvasDom.style.width = "100%";
+        return this.faces;
+    }
 ```
+
+这里需要留意`canvas`和`image`的大小问题
 
 * **创建一次执行的类**
 
 ```js
-export function initDetector() {
+let detector_online: KeypointDetector;
+
+function initDetector() {
     detector_online = new KeypointDetector('imgDom', 'canvasOnline');
     detector_online.init_again();
     const btn = document.getElementById('startOnline');
     btn.addEventListener("click", (event) => {
-        detector_online.detect();
-        detector_online.drawResult();
+        detector_online.detect().then(() => {
+            detector_online.drawResult();
+        });
+
     });
 }
+
 ```
 
 ## 4. 效果展示和使用说明
@@ -168,6 +181,8 @@ export function initDetector() {
 <img src="imgs/demo1.png" alt="demo1" style="zoom: 67%;" />
 
 <img src="imgs/demo2.png" alt="demo1" style="zoom: 50%;" />
+
+<img src="imgs/demo3.png" alt="demo1" style="zoom: 50%;" />
 
 在[这里](./intro.html)我们给出了使用方法以及环境配置说明，关于综合标记的代码及页面放在`tfLandmark`文件夹下。
 

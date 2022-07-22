@@ -12,12 +12,17 @@ os.makedirs("./input/", exist_ok=True)
 
 
 def keyPointDetection(imgPath: str):
+    '''
+        Input: source image url gotten from html
+        Output: relative position of the result image
+    '''
     from urllib.request import urlretrieve
     urlretrieve(imgPath, './input/srcImg.png')
     src_img = cv2.imread("./input/srcImg.png")
-    # print(imgPath)
-    # 加载模型并进行预测
+
+    # load model from paddle hub
     module = hub.Module(name="face_landmark_localization")
+    # get result from face landmark model
     result = module.keypoint_detection(images=[src_img])
 
     tmp_img = src_img.copy()
@@ -25,6 +30,7 @@ def keyPointDetection(imgPath: str):
         for i in range(len(result[0]['data'])):
             for index, point in enumerate(result[0]['data'][i]):
                 cv2.circle(tmp_img, (int(point[0]), int(point[1])), 1, (0, 255, 0), -1)
+
 
         res_img = 'output/face_landmark.png'
         cv2.imwrite(res_img, tmp_img)

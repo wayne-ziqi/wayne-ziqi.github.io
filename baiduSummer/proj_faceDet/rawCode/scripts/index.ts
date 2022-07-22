@@ -8,7 +8,7 @@ async function initModels() {
     inputFile.addEventListener("change", (event) => {
         if (event.target.files[0]) {
             imgDom.src = URL.createObjectURL(event.target.files[0]);
-            downloadCanvasImage("imgDom", "srcImg");
+            downloadCanvasImage("imgDom", "srcImgLink", "srcImg");
         }
     });
     const startDet = document.getElementById("startDet");
@@ -46,7 +46,13 @@ async function initModels() {
     return null;
 }
 
-function downloadCanvasImage(imgID, name) {
+function downloadCanvasImage(imgID:string, srcImgLinkId:string ,name) {
+    /*
+    * Input: image id to be downloaded,
+    *        link id the image is to be stored in
+    *        name of the final download link
+    * Intro: the function while
+    * */
     let image = new Image();
     // 解决跨域 Canvas 污染问题
     image.setAttribute('crossOrigin', 'anonymous');
@@ -59,7 +65,7 @@ function downloadCanvasImage(imgID, name) {
         context.drawImage(image, 0, 0, image.width, image.height);
         let url = canvas.toDataURL('image/png');
         // 生成一个a元素
-        let a = <HTMLLinkElement>document.getElementById("srcImgLink");
+        let a = <HTMLLinkElement>document.getElementById(srcImgLinkId);
         a.download = name || 'downLoadImg';
         // 将生成的URL设置为a.href属性
         a.href = url;
